@@ -1,7 +1,7 @@
 "use server"
 // This is a server action component it should be used in a server action
 // this file should lay in the actions folder in the root of app
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 import { RegisterSchema } from "@/schemas";
 import * as z from "zod";
 import { db } from "@/lib/db";
