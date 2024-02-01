@@ -1,5 +1,5 @@
 "use server"
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 
 import { getPasswordResetTokenByToken } from "@/data/passwordResetToken"
 import { getUserByEmail } from "@/data/user"
