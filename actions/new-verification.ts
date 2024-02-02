@@ -5,10 +5,15 @@ import { db } from "@/lib/db"
 
 export const newVerification = async (token: string) => {
 
-    const existingToken = await getVerificationTokenByToken(token)
-
+    // const existingToken = await getVerificationTokenByToken(token)
+const existingToken =await db.verificationToken.findUnique({
+    where:{
+        token
+    }
+    
+})
 console.log(existingToken)
-if (!existingToken) return { Error:" Token does not exist"}
+if (!existingToken) return { error:" Token does not exist"}
         
       const hasExpired = new Date(existingToken.expires) < new Date()
 if(hasExpired){
