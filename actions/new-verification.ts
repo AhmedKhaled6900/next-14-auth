@@ -1,17 +1,13 @@
-"use server "
+"use server"
 import { getUserByEmail } from "@/data/user"
 import { getVerificationTokenByToken } from "@/data/verification-token"
 import { db } from "@/lib/db"
 
-export const newVerification = async (token: string) => {
+export const NewVerification = async (token: string) =>{
 
-    // const existingToken = await getVerificationTokenByToken(token)
-const existingToken =await db.verificationToken.findUnique({
-    where:{
-        token
-    }
-    
-})
+    const existingToken = await getVerificationTokenByToken(token)
+
+
 console.log(existingToken)
 if (!existingToken) return { error:" Token does not exist"}
         
@@ -25,7 +21,7 @@ if(!existingUser){
 }
 
 await db.user.update({
-    
+
     where:{
         id:existingUser.id
     },
@@ -36,10 +32,20 @@ await db.user.update({
 })
     
 
-await db.verificationToken.delete({
-    where:{
-        id:existingToken.id
-    }
-})
+// await db.verificationToken.delete({
+//     where:{
+//         id:existingToken.id
+//     }
+// })
 return { success:"Email verified"}
 }
+// import { newVerification } from "@/actions/new-verification";
+
+// export default async function handler(req, res) {
+//   try {
+//     const token = req.query.token;
+//     const data = await newVerification(token);
+//     res.status(200).json(data);
+//   } catch (error) {
+//     res.status(500).json({ error: "An error occurred" });
+//   }

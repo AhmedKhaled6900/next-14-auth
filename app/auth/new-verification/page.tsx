@@ -1,4 +1,3 @@
-"use client"
 
 import { NewVerificationFormPage } from '@/components/auth/new-verificationForm'
 const  VerificationPage=()=> {

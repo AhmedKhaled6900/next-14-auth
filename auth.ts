@@ -51,7 +51,7 @@ export const {
 
       if(existingUser.isTwoFactorEnabled) {
       const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id)
-
+console.log(twoFactorConfirmation)
       if(!twoFactorConfirmation)  return false
       await db.twoFactorConfirmation.delete({
         where:{

@@ -1,37 +1,34 @@
-"use client "
+"use client"
 import { CardWrapper } from "./cadr-wrapper"
 import { BeatLoader } from "react-spinners"
 import { useSearchParams } from "next/navigation"
-import { useCallback, useEffect, useState } from "react"
-import { newVerification } from "@/actions/new-verification"
+import { startTransition, useCallback, useEffect, useState } from "react"
+import { NewVerification } from "@/actions/new-verification"
 import { FormSuccess } from "../form-success"
 import { FormError } from "../form-error"
 
 export  const NewVerificationFormPage =()=>{
-const [error, setError] = useState<string | undefined>();
-const [success, setSuccess] = useState<string | undefined>();
+const [error, setError] = useState<string | undefined>("");
+const [success, setSuccess] = useState<string | undefined>("");
 
     const seearchParams = useSearchParams();
     const token = seearchParams.get(`token`);
-    
-    
-    const onSubmit = useCallback(()=>{
-        console.log(token)
-      if(success || error) return ;
-        if(!token)  {
-            setError("Missing token")
-            return;
-        }
-
-newVerification(token)
-.then((data)=>{
-    setSuccess(data.success),
-    setError(data.Error)
-})
+    const onSubmit =useCallback(()=>{
+        setError("")
+        setSuccess("")
+        NewVerification(token as string)
+            .then((data)=>{
+            setError(data.error)
+            setSuccess(data.success)}) 
 .catch(()=>{
-    setError("some thing went wrong")
+    setError(error);
+    console.error("ror fetching verification token:", error);
+    throw error; // Re-throw the error for further handling
+ 
 })
     },[token])
+
+
     useEffect(()=>{
         onSubmit()
     

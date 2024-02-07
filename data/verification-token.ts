@@ -1,3 +1,5 @@
+"use server"
+
 import { db 
 } from "@/lib/db";
 export const getVerificationTokenByEmail = async (email: string) => {
@@ -10,17 +12,34 @@ export const getVerificationTokenByEmail = async (email: string) => {
         return verificationToken
     }
     catch {
-return;
+return  null ;
     }
 }
-export const getVerificationTokenByToken = async(token: string) => {
+// export const getVerificationTokenByToken = async(token: string) => {
+//     try {
+//         const verificationToken = await db.verificationToken.findUnique({
+//             where: {token}
+//         })
+//         return verificationToken
+//     }
+// catch {
+// return   ; 
+//     } 
+// }
+
+export const getVerificationTokenByToken = async (token: string) => {
     try {
-        const verificationToken = await db.verificationToken.findUnique({
-            where: {token}
-        })
-        return verificationToken
+      console.log("Searching for token:", token);
+      const verificationToken = await db.verificationToken.findUnique({
+        where: { token }
+      });
+    //   if (!verificationToken) {
+    //     console.error("Verification token not found");
+    //   }
+      return verificationToken;
+    } catch (error) {
+      console.error("Error fetching verification token:", error);
+      // throw error;
+       // Re-throw the error for further handling
     }
-catch {
-return ;
-    }
-}
+  };

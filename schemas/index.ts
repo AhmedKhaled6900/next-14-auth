@@ -6,11 +6,12 @@ export const  SettingsSchema = z.object({
 export const LoginSchema =
  z.object({ email: z.string().email({
     message: "invalid email"
-}), password: z.string().min(8 ,{message:"password is required"}),
+}),
+ password: z.string().min(8 ,{message:"password is required"}),
 
 code: z.optional(z.string())
 });
-
+ 
 export const ResetSchema =
  z.object({ email: z.string().email({
     message: "invalid email"

@@ -60,11 +60,14 @@ export const LoginForm = () => {
             setShowTwoFactor(true)
           }
         })
-        .catch(() => {
-          setError("some thing went wrong")
-        })
+.catch(() => {
+
+  setError("Something wentwrong")
+  // throw new Error("Something went wrong")
+
+})
     })
-    Login(values)
+    // Login(values)
   }
 
   return (
@@ -89,7 +92,7 @@ export const LoginForm = () => {
                           disabled={ispending}
 
                           placeholder="123456"
-
+type="text"
                         />
                       </FormControl>
                       <FormMessage />

@@ -39,27 +39,23 @@ if (!existingUser.emailVerified) {
     )
     return {success:" check your mail for Confirmation"}
 }
+
 if(existingUser.isTwoFactorEnabled && existingUser.email)
-{
-    if(code)
-    {
-const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email)
-if(!twoFactorToken )
-return { error:"Invalid code"}
-if(twoFactorToken.token !== code)
-return { error:"Invalid code"}
-const hasExpired = new Date(twoFactorToken.expires) < new Date();
-if(hasExpired)
-return { error:"code has expired"}
-await db.twoFactorToken.delete({
-    where:{
-        id:twoFactorToken.id
-    }
-})
-    }
+{ 
+    if(code){
+        const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email)
+if(!twoFactorToken) return {error:"Invalid code"}
+if(twoFactorToken.expires < new Date()) return {error:"Code expired"}
+if(twoFactorToken.token !== code) return {error:"Invalid code"}
+
+// await db.twoFactorConfirmation.delete({
+//     where:{
+//         id:twoFactorToken.id
+//     }
+// })
 const existingConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id)
-if(existingConfirmation)
-{
+
+if(existingConfirmation) {
     await db.twoFactorConfirmation.delete({
         where:{
             id:existingConfirmation.id
@@ -71,21 +67,17 @@ await db.twoFactorConfirmation.create({
         userId:existingUser.id
     }
 })
-    }
-
-
-
-    
-    else{
+    } 
+    else {
         const twoFactorToken = await generateTwoFactorToken(existingUser.email)
-        if(!twoFactorToken )
-return { error:"Invalid code"}
+
         await sendTwoFactorTokenEmail(
             twoFactorToken.email,
             twoFactorToken.token
         )
-      return {twoFactor:true}   
-    
+return {twoFactor:true}   
+
+    }
     }
 try {
     await signIn("credentials",{
@@ -102,7 +94,7 @@ catch (error) {
           case "CredentialsSignin":
                return {error:"Invalid email or password"}
                default:
-                     return {error:"somthingwent wrong"}
+                     return {error:"somthingwentwrong"}
      }
 
 }

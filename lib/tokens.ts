@@ -1,3 +1,4 @@
+"use server"
 import { getVerificationTokenByEmail } from '@/data/verification-token';
 import {v4 as uuidv4} from 'uuid'
 import { db } from '@/lib/db';
@@ -15,20 +16,20 @@ export const generateTwoFactorToken = async (email: string) => {
         await db.twoFactorToken.delete({
             where: {
                 id: existingtoken.id
-            }
-           
+            }          
         })
-        const twoFactorToken = await db.twoFactorToken.create({
-            data: {
-                
-                email,
-                token,
-                expires
-            
-            }
-        })
-     return twoFactorToken
-    }}
+    }
+    const twoFactorToken = await db.twoFactorToken.create({
+        data: {
+            email,
+            token,
+            expires
+        }
+    })
+
+    return twoFactorToken
+
+}
 
 export const generatePasswordResetToken = async (email: string) => {
     const token =  uuidv4();
@@ -67,7 +68,6 @@ export const generatePasswordResetToken = async (email: string) => {
 }
 export const generateVerificationToken = async (email: string) => {
     const token = uuidv4();
-    console.log(token)
     const  expires = new Date(new Date().getTime() + 3600*1000);
  const existingtoken = await getVerificationTokenByEmail(email)
 
