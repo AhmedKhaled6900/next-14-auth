@@ -4,9 +4,10 @@ import { signOut } from 'next-auth/react'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { settings } from '@/actions/settings'
-// import { useCurrentUser } from '@/hooks/use-current-user'
+
 const  SettingsPage = ()=> {
   const [isPending,startTransition] = useTransition()
+
 
 const onClick = ()=>{
 
