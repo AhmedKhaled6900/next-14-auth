@@ -10,7 +10,7 @@ import { Navbar } from "./_components/navbar"
     return (
         <div className='h-full w-full flex flex-col gap-y-10 items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-800 to-black'>
 
-         <MainNavbar></MainNavbar>
+         {/* <MainNavbar></MainNavbar> */}
             {children}
         </div>
     )

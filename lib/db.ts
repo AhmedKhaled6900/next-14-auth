@@ -10,6 +10,7 @@ export const db = globalThis.prisma || new PrismaClient()
 if(process.env.NODE_ENV !== "production"){
     globalThis.prisma = db
 }
+
 // the upcoming code will use in production mode
 // export const db = new PrismaClient()
 //
