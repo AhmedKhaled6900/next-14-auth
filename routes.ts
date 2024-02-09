@@ -15,6 +15,7 @@ export const autheRoutes = [
     "/auth/error",
     "/auth/reset-password",
     "/auth/new-password",
+    // "/dashboard",
  
 ]
 // the prefix for api authentication routes 
