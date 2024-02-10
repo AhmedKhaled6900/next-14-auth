@@ -9,13 +9,15 @@ export const publicRoutes = [
 // An Array of routes that are used for authentiacation
 // these routes will redirect logged in users  to / settings 
 
+export const adminRoutes = [
+    `/dashboard`,
+]
 export const autheRoutes = [
     '/auth/login',
     '/auth/register',
     "/auth/error",
     "/auth/reset-password",
     "/auth/new-password",
-    // "/dashboard",
  
 ]
 // the prefix for api authentication routes 

@@ -12,3 +12,9 @@ export const admin = async()=>{
     return {error:"Forbidden"}
 
 }
+ export const isAdmin  =async()=>{
+
+    const role = await currentRole()
+   return 
+   
+ }

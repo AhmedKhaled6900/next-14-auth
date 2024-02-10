@@ -9,7 +9,7 @@ import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation
 declare module "@auth/core" {
   interface session{
     user:{
-      role: any
+role:UserRole
     } & DefaultSession["user"]
   }
 }
@@ -20,7 +20,8 @@ export const {
 
   auth,
   signIn,
-  signOut
+  signOut,
+  
 } = NextAuth({
   pages:{
    signIn:"/auth/login", 
@@ -66,7 +67,7 @@ if (token.sub && session.user){
   session.user.id = token.sub
 }
 if(token.role && session.user){
-  session.user.role = token.role as UserRole
+  session.user.role = token.role as "ADMIN" | "USER"
 }
 if( session.user){
   session.user.isTwofactEnabled = token.isTwofactEnabled as boolean
@@ -75,18 +76,20 @@ if(session.user){
 session.user.name = token.name as string
 session.user.email = token.email as string
 session.user.image = token.image as string
+session.user.role = token.role as UserRole
 }
       return session
     },
 
  async jwt({ token }) {
+
+
  if (!token.sub) return token
 const existingUser =await getUserById(token.sub)
 if (!existingUser){
 
   return token
 }
-
 token.name = existingUser.name
 token.email = existingUser.email
 token.image = existingUser.image

@@ -6,6 +6,7 @@ import { currentUser } from "@/lib/auth"
 
  const ClientPage = () => {
 const user =useCurrentUser()
+
     return (
 <UserInfo
 user={user}
