@@ -4,7 +4,7 @@ import {db} from "@/lib/db";
 
 import { SettingsForm } from "./components/settings-form";
 import { auth } from "@/auth";
-import StoreModal from "@/components/modals/store-modal";
+// import StoreModal from "@/components/modals/store-modal";
 
 const SettingsPage = async ({
   params
