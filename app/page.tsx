@@ -1,4 +1,5 @@
-import Image from 'next/image'
+
+// this is the Home page 
 import { Poppins } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { Button } from "@/components/ui/button"
@@ -26,6 +27,8 @@ export default function Home() {
   <Button>Signin</Button>
 
   </LoginButton> */}
+
+  home
 </div>
 </div>
 </main>

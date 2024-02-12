@@ -16,7 +16,7 @@ const formSchema = z.object({
   name: z.string().min(1),
 });
 
-export const StoreModal = () => {
+ export  const StoreModal = () => {
   const storeModal = useStoreModal();
 
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ export const StoreModal = () => {
 
       const response = await axios.post('/api/stores', values);
       console.log(response)
-      // window.location.assign(`/${response.data.id}`);
+      window.location.assign(`/${response.data.id}`);
     } catch (error) {
       console.log(error);
       toast.error('Something went wrong');
@@ -88,3 +88,4 @@ export const StoreModal = () => {
     </Modal>
   );
 };
+// export default StoreModal
