@@ -14,6 +14,7 @@ export async function POST(
     console.log(userId);
     const body = await req.json();
     const { name } = body;
+    console.log(body);
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
