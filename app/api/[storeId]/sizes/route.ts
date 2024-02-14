@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
 
-import prismadb from '@/lib/prismadb';
+import {db} from '@/lib/db';
+import { auth } from '@/auth';
  
 export async function POST(
   req: Request,
   { params }: { params: { storeId: string } }
 ) {
   try {
-    const { userId } = auth();
+    const  userId  = await auth();
 
     const body = await req.json();
 
@@ -30,10 +30,10 @@ export async function POST(
       return new NextResponse("Store id is required", { status: 400 });
     }
 
-    const storeByUserId = await prismadb.store.findFirst({
+    const storeByUserId = await db.store.findFirst({
       where: {
         id: params.storeId,
-        userId
+        userId: userId.user.id
       }
     });
 
@@ -41,7 +41,7 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const size = await prismadb.size.create({
+    const size = await db.size.create({
       data: {
         name,
         value,
@@ -65,7 +65,7 @@ export async function GET(
       return new NextResponse("Store id is required", { status: 400 });
     }
 
-    const sizes = await prismadb.size.findMany({
+    const sizes = await db.size.findMany({
       where: {
         storeId: params.storeId
       }

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs";
 
-import prismadb from "@/lib/prismadb";
+import {db} from "@/lib/db";
+import { auth } from "@/auth";
 
 export async function GET(
   req: Request,
@@ -12,7 +12,7 @@ export async function GET(
       return new NextResponse("Product id is required", { status: 400 });
     }
 
-    const product = await prismadb.product.findUnique({
+    const product = await db.product.findUnique({
       where: {
         id: params.productId
       },
@@ -36,7 +36,7 @@ export async function DELETE(
   { params }: { params: { productId: string, storeId: string } }
 ) {
   try {
-    const { userId } = auth();
+    const  userId  = await auth();
 
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
@@ -46,18 +46,17 @@ export async function DELETE(
       return new NextResponse("Product id is required", { status: 400 });
     }
 
-    const storeByUserId = await prismadb.store.findFirst({
+    const storeByUserId = await db.store.findFirst({
       where: {
         id: params.storeId,
-        userId
-      }
+        userId: userId.user.id     }
     });
 
     if (!storeByUserId) {
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const product = await prismadb.product.delete({
+    const product = await db.product.delete({
       where: {
         id: params.productId
       },
@@ -76,7 +75,7 @@ export async function PATCH(
   { params }: { params: { productId: string, storeId: string } }
 ) {
   try {
-    const { userId } = auth();
+    const  userId  = await auth();
 
     const body = await req.json();
 
@@ -114,10 +113,10 @@ export async function PATCH(
       return new NextResponse("Size id is required", { status: 400 });
     }
 
-    const storeByUserId = await prismadb.store.findFirst({
+    const storeByUserId = await db.store.findFirst({
       where: {
         id: params.storeId,
-        userId
+        userId:userId.user.id
       }
     });
 
@@ -125,7 +124,7 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    await prismadb.product.update({
+    await db.product.update({
       where: {
         id: params.productId
       },
@@ -143,7 +142,7 @@ export async function PATCH(
       },
     });
 
-    const product = await prismadb.product.update({
+    const product = await db.product.update({
       where: {
         id: params.productId
       },

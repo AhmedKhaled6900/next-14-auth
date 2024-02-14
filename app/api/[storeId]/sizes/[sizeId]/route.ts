@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import prismadb from "@/lib/prismadb";
-import { auth } from "@clerk/nextjs";
+import {db} from "@/lib/db";
+import { auth } from "@/auth";
 
 export async function GET(
   req: Request,
@@ -12,7 +12,7 @@ export async function GET(
       return new NextResponse("Size id is required", { status: 400 });
     }
 
-    const size = await prismadb.size.findUnique({
+    const size = await db.size.findUnique({
       where: {
         id: params.sizeId
       }
@@ -30,7 +30,7 @@ export async function DELETE(
   { params }: { params: { sizeId: string, storeId: string } }
 ) {
   try {
-    const { userId } = auth();
+    const  userId  = await auth();
 
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
@@ -40,10 +40,10 @@ export async function DELETE(
       return new NextResponse("Size id is required", { status: 400 });
     }
 
-    const storeByUserId = await prismadb.store.findFirst({
+    const storeByUserId = await db.store.findFirst({
       where: {
         id: params.storeId,
-        userId
+        userId : userId.user.id
       }
     });
 
@@ -51,7 +51,7 @@ export async function DELETE(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const size = await prismadb.size.delete({
+    const size = await db.size.delete({
       where: {
         id: params.sizeId
       }
@@ -70,7 +70,7 @@ export async function PATCH(
   { params }: { params: { sizeId: string, storeId: string } }
 ) {
   try {
-    const { userId } = auth();
+    const  userId  =  await auth();
 
     const body = await req.json();
 
@@ -93,10 +93,10 @@ export async function PATCH(
       return new NextResponse("Size id is required", { status: 400 });
     }
 
-    const storeByUserId = await prismadb.store.findFirst({
+    const storeByUserId = await db.store.findFirst({
       where: {
         id: params.storeId,
-        userId
+        userId: userId.user.id
       }
     });
 
@@ -104,7 +104,7 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const size = await prismadb.size.update({
+    const size = await db.size.update({
       where: {
         id: params.sizeId
       },
