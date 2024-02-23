@@ -4,8 +4,9 @@ import { X } from "lucide-react";
 
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
-import useCart from "@/hooks/dashboard/hooks/use-cart";
+// import useCart from "@/hooks/dashboard/hooks/use-cart";
 import { Product } from "@/types";
+import useCart from "@/hooks/dashboard/hooks/use-cart";
 
 
 interface CartItemProps {
