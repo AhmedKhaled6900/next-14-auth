@@ -1,5 +1,5 @@
 interface CartItemInfoProps {
-  product: Record<string, any>;
+  product: Record<string,any>;
 }
 
 const CartItemInfo: React.FC<CartItemInfoProps> = ({
