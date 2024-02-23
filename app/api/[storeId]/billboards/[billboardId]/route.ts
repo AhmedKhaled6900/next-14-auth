@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-// import { auth } from "@clerk/nextjs";
 import  {db} from "@/lib/db";
 import { auth } from "@/auth";
 
@@ -17,8 +16,9 @@ export async function GET(
         id: params.billboardId
       }
     });
-  
-    return NextResponse.json(billboard);
+
+
+    return NextResponse.json(billboard)
   } catch (error) {
     console.log('[BILLBOARD_GET]', error);
     return new NextResponse("Internal error", { status: 500 });

@@ -7,6 +7,8 @@ import './globals.css'
 import  {SessionProvider} from "next-auth/react"
 import {auth} from "@/auth"
 import { Toaster } from '@/components/ui/sonner'
+import TheMainNavbar from '@/components/categoriesLinks'
+import Billboard from '@/components/ui/billboard'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -22,9 +24,9 @@ export default async function RootLayout({
  const session  = await auth()
   return (
     <SessionProvider session={session}>
-
     <html lang="en">
       <body className={inter.className}>
+<TheMainNavbar></TheMainNavbar>
         <Toaster></Toaster>
         {children}</body>
     </html>

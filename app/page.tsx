@@ -1,40 +1,46 @@
-// "use client"
-// this is the Home page 
-import { Poppins } from 'next/font/google'
-import { cn } from '@/lib/utils'
-import { Button } from "@/components/ui/button"
-import { LoginButton } from '@/components/auth/login-button'
-import { Navbar } from './(protectedRoutes)/_components/navbar'
-import { MainNavbar } from './(protectedRoutes)/_components/main-nav'
-import ResNavbar from '@/components/header'
-// import Header from '@/components/header'
 
-const font = Poppins({ subsets: ['latin'], weight: '600' })
 
-export default function Home() {
+// import GetBillboard from "@/actions/get-billboard";
+// import getBillboard from "@/actions/get-billboard";
+import getBillboard from "@/actions/get-billboard";
+import getCategories from "@/actions/get-categories";
+import getProducts from "@/actions/get-products";
+import ProductList from "@/components/product-list";
+import Billboards from "@/components/ui/billboard";
+// import Billboard from "@/components/ui/billboard";
+import Container from "@/components/ui/container";
+
+// export const revalidate = 0;
+
+const HomePage = async  () => {
+  // const [billboards, setBillboards] = useState([]);
+  // const [error, setError] = useState(null);
+  // const products = await getProducts({ isFeatured: true });
+  // const billboard = await ("0e12e5cf-29ab-4529-b8d5-c5371dae1f7b");
+
+    // const storeId = '0e12e5cf-29ab-4529-b8d5-c5371dae1f7b'; // Replace with actual store ID
+  
+    // const products = await getProducts({ isFeatured: true });
+
+const products = await getProducts({isFeatured:false})
+
+const billboard =  await getBillboard("6a066fe9-75f6-489c-8f63-587936eb931f")
+
   return (
-<main className='  h-full  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-300 to-blue-700'>
-
-{/* <MainNavbar></MainNavbar> */}
-<ResNavbar></ResNavbar>
-{/* <Header></Header> */}
-<div className='space-y-6 text-center'>
-{/* <h1 className={ cn("text-6xl font-semibold text-white drop-shadow-md",
- font.className)}>
-  🔏 Auth
-</h1> */}
-{/* <p className='text-2xl text-white'>
-  simple authintication with next service
-</p> */}
-<div>
-  {/* <LoginButton asChild>
-  <Button>Signin</Button>
-
-  </LoginButton> */}
-
-  home
-</div>
-</div>
-</main>
+    <Container>
+      <div className="space-y-10 pb-10">
+        home
+        <Billboards
+          data={ billboard}
+        />
+        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
+          <ProductList title="Featured Products" items={products} />
+        </div>
+      </div>
+    </Container>
   )
-}
+
+
+};
+
+export default HomePage;

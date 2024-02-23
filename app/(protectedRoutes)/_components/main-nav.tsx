@@ -1,5 +1,6 @@
-"use client"
+// "use client"
 
+import getCategories from "@/actions/get-categories"
 import { auth } from "@/auth"
 import { UserButton } from "@/components/auth/user-button"
 import { Button } from "@/components/ui/button"
@@ -8,18 +9,21 @@ import { useCurrentUser } from "@/hooks/use-current-user"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-export const MainNavbar = () => {
-    const pathname = usePathname()
-const user =useCurrentUser()
-const role =useCurrentRole()
-console.log(role)
+export const MainNavbar = async () => {
+    // const pathname = usePathname()
+// const user =useCurrentUser()
+// const role =useCurrentRole()
+// console.log(role)
+const categories = await getCategories()
+categories.map((item)=>console.log(item))
 
+// console.log(categories) 
     // const session= auth()
     // console.log(session)
     return (
         <nav className=" w-full bg-secondary flex justify-between items-center p-4  shadow-sm" >
 
-            {role ==="ADMIN" && (
+            {/* {role ==="ADMIN" && (
                 <div className="flex gap-x-2">
 
 <Button asChild 
@@ -30,14 +34,14 @@ Dashboard
 </Link>
 </Button>
                 </div>
-            )}
+            )} */}
 {/* 
    {
        user&&(
            user.name
        )
    } */}
-   {
+   {/* {
      
        <div className="flex gap-x-2">
        <Button asChild  className="p-2"
@@ -71,7 +75,7 @@ Dashboard
    </Link>
    </Button>
        </div>
-   }
+   } */}
            {/* <div className="flex gap-x-2">
            <Button asChild  className="p-2"
    

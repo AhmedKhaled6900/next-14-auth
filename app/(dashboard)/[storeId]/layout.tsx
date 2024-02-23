@@ -4,6 +4,7 @@ import { auth } from '@/auth';
 import { MainNavbar } from '../../(protectedRoutes)/_components/main-nav';
 import Navbar from '../_dashboard-components/navbar';
 import { ModalProvider } from '@/providers/modal-provider';
+import getCategories from '@/actions/get-categories';
 
 export default async function DashboardLayout({
   children,
@@ -16,6 +17,8 @@ export default async function DashboardLayout({
   if (userId?.user.role !== "ADMIN") {
     redirect('/');
   }
+  // const categories = getCategories()
+  // console.log(categories)
 
   const store = await db.store.findFirst({ 
     where: {

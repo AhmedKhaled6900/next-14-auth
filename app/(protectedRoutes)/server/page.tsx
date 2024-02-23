@@ -1,8 +1,11 @@
+import getCategories from "@/actions/get-categories"
 import { UserInfo } from "@/components/userInfo"
 import { currentUser } from "@/lib/auth"
 
  const ServerPage =async () => {
 const user =await currentUser()
+// const categories =await getCategories()
+// console.log(categories)
     return (
 <UserInfo
 user={user}

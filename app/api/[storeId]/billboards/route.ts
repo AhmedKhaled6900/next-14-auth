@@ -57,9 +57,13 @@ export async function POST(
 };
 
 export async function GET(
+ 
   req: Request,
   { params }: { params: { storeId: string } }
+  
 ) {
+
+
   try {
     if (!params.storeId) {
       return new NextResponse("Store id is required", { status: 400 });
@@ -70,8 +74,8 @@ export async function GET(
         storeId: params.storeId
       }
     });
-  
-    return NextResponse.json(billboards);
+  // console.log(NextResponse.json(billboards))
+    return Response.json({billboards});
   } catch (error) {
     console.log('[BILLBOARDS_GET]', error);
     return new NextResponse("Internal error", { status: 500 });
