@@ -22,7 +22,10 @@ const HomePage = async  () => {
   
     // const products = await getProducts({ isFeatured: true });
 
-const products = await getProducts({isFeatured:false})
+const products = await getProducts({
+  isFeatured: false,
+  colorId: ""
+})
 
 const billboard =  await getBillboard("6a066fe9-75f6-489c-8f63-587936eb931f")
 
