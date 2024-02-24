@@ -2,13 +2,12 @@
 
 import { Product } from "@/types";
 import qs from "query-string";
-import { resolve } from "styled-jsx/macro";
 
 const URL= (`${process.env.NEXT_PUBLIC_API_URL}/products`);
 
 interface Query {
   categoryId?: string;
-  colorId?: string;
+  colorId: string;
   sizeId?: string;
   isFeatured?: boolean;
 }
