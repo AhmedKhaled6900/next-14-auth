@@ -25,9 +25,10 @@ const getProducts = async (query: Query): Promise<Product[]> => {
   });
  
  const res =  await fetch(url, {
-   headers: {
-     'Content-Type': 'application/json',
-   }
+  headers: {
+    key: 'Content-Type',
+    value: 'application/json',
+  }
  })
   .then((res) => res.json())
   .then((data) => { 
