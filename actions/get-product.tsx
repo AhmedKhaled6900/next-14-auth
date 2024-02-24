@@ -7,9 +7,11 @@ const getProduct = async (id: string): Promise<Product> => {
     headers: {
       'Content-Type': 'application/json',
     }
+  }).then((res) => res.json()).then((data) => {
+    return data;
   });
 
-  return res.json();
+  return res
 };
 
 export default getProduct;

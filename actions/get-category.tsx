@@ -7,9 +7,11 @@ const getCategory = async (id: string): Promise<Category> => {
     headers: {
       'Content-Type': 'application/json',
     }
+  }).then((res) => res.json()).then((data) => {
+    return data;
   });
+  return res
 
-  return res.json();
 };
 
 export default getCategory;

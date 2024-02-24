@@ -7,9 +7,11 @@ const getColors = async (): Promise<Color[]> => {
     headers: {
       'Content-Type': 'application/json',
     }
+  }).then((res) => res.json()).then((data) => {
+    return data;
   });
 
-  return res.json();
+  return res
 };
 
 export default getColors;
