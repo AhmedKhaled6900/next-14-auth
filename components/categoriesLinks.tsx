@@ -24,7 +24,7 @@ const categories =await getCategories();
             <p className="font-bold text-xl">STORE</p>
           </Link>
           <Navbar data={categories} /> 
-          {/* <NavbarActions />  */}
+          <NavbarActions /> 
         </div>
       </Container>
     </div>
