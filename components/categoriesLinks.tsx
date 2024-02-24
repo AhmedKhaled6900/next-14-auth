@@ -1,7 +1,6 @@
 
 import { Category } from "@/types";
 
-import useSWR from 'swr'
 import Link from "next/link";
 
 
@@ -9,18 +8,14 @@ import Container from "@/components/ui/container";
 import NavbarActions from "./ui/navbar-actions";
 import MainNav from "./main-nav";
 import getCategories from "@/actions/get-categories";
-import { useEffect, useState } from "react";
-import categories from "@/data/categories";
 import Navbar from "./header";
-import getBillboard from "@/actions/get-billboard";
 
 
 
 
  const  TheMainNavbar =  async ()=> { 
 const categories =await getCategories();
-// const billboard =  await getBillboard("6a066fe9-75f6-489c-8f63-587936eb931f")
-// console.log(billboard)
+
   return ( 
     <div className="border-b">
       <Container>
