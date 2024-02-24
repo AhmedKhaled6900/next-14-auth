@@ -2,6 +2,7 @@
 
 import { Product } from "@/types";
 import qs from "query-string";
+import { resolve } from "styled-jsx/macro";
 
 const URL=`http://localhost:3000/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/products`;
 
@@ -23,17 +24,19 @@ const getProducts = async (query: Query): Promise<Product[]> => {
     },
   });
  
- return await  fetch(url, {
+ const res =  await fetch(url, {
    headers: {
      'Content-Type': 'application/json',
    }
  })
-  .then((res) => res.json()).then((data) => { 
-    console.log(data)
-    return data
+  .then((res) => res.json())
+  .then((data) => { 
+
+return data
+ 
   })
 
-
+  return res
 };
 
 export default getProducts;

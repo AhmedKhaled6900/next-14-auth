@@ -5,18 +5,17 @@ const URL=`${process.env.NEXT_PUBLIC_API_URL}/billboards`;
 
  const getBillboard = async(id: string): Promise<Billboard>=> {
  
-  return await fetch(`${URL}/${id}`, {
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  }
-
-  )
-  .then((res) => res.json())
-  .then((data) => {
-    return data;
-  });
-  
+   const res=  await fetch(`${URL}/${id}`, {
+     headers: {
+       'Content-Type': 'application/json',
+     }
+   }
+   )
+     .then((res) => res.json())
+     .then((data) => {
+       return data;
+     });
+  return res
 };
 
 export default getBillboard;

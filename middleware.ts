@@ -48,13 +48,3 @@ export const config = {
 }
 
 
-// export function middleware() {
-//   const response = NextResponse.next();
-//   response.headers.set('Content-Type', 'application/json');
-//   return response.json();
-// }
-
-// next.config.js
-// export default {
-//   middleware: ['middleware.js'],
-// };
