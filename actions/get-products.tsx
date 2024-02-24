@@ -4,7 +4,7 @@ import { Product } from "@/types";
 import qs from "query-string";
 import { resolve } from "styled-jsx/macro";
 
-const URL=`http://localhost:3000/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/products`;
+const URL= (`${process.env.NEXT_PUBLIC_API_URL}/products`);
 
 interface Query {
   categoryId?: string;
