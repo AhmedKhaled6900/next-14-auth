@@ -15,12 +15,12 @@ export const publicRoutes = [
 "/category"
 ]
 
-export const clientRoutes = [
+export const clientRoutes = 
    `/category`
-]
-export const productRoute =[
+
+export const productRoute =
     "/product"
-]
+
 // An Array of routes that are used for authentiacation
 // these routes will redirect logged in users  to / settings 
 
