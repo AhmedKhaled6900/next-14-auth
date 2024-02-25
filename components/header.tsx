@@ -9,12 +9,13 @@ import { usePathname } from "next/navigation";
 import NavbarActions from "./ui/navbar-actions";
 import { UserButton } from "./auth/user-button";
 import { useCurrentRole } from "@/hooks/use-current-role";
+import { Button } from "./ui/button";
 
 interface MainNavProps {
   data: Category[];
 }
 const Navbar:React.FC<MainNavProps>  = ({data}) => {
-  // const role = useCurrentRole();
+  const role = useCurrentRole();
     const [nav, setNav] = useState(false);
 
     // Function to hide nav on resize
@@ -46,28 +47,16 @@ const pathname = usePathname();
     
 
 
-    <div className="flex justify-between items-center w-full h-20 px-4 text-black  nav">
-      <div>
-        {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
-        {/* <h1 className="text-5xl font-signature ml-2">
-          <a
-            className="link-underline link-underline-black"
-            href=""
-            target="_blank"
-            rel="noreferrer"
-          >
-            Logo
-          </a>
-        </h1> */}
-      </div>
+    <div className=" z-50 flex justify-end items-center w-full h-20 px-4 text-white nav">
+    
 
-      <ul className="hidden md:flex ">
+      <ul className="hidden md:flex z-50  ">
       {routes.map((route) => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium transition-colors hover:text-black p-3',
+            'text-sm font-medium transition-colors hover:text-black p-3 z-50',
             route.active ? 'text-black' : 'text-neutral-500'
           )}
         >
@@ -77,43 +66,53 @@ const pathname = usePathname();
 
       ))}
 
-<NavbarActions /> 
 <UserButton></UserButton>
+<NavbarActions /> 
 
 
       </ul>
-      {/* {
+      {
   role==="ADMIN"? (
+    <Button className="m-5">
     <Link href={"/dashboard"}>
       Dashboard
     </Link>
+    </Button>
+
   ):null
-} */}
+}
+
+{/* <NavbarActions />  */}
+
       <div
         onClick={() => setNav(!nav)}
-        className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden"
+        className="cursor-pointer pr-4 z-10 md:hidden text-black"
       >
         {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
       </div>
 
       {nav && (
-        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+        <>
+        
+        
+      
+        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen  bg-slate-400 text-gray-500">
           {routes.map((route) => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium transition-colors hover:text-black',
-            route.active ? 'text-black' : 'text-neutral-500'
+            'text-lg font-bold transition-colors hover:text-black',
+            route.active ? 'text-black' : 'text-white'
           )}
         >
           {route.label}
       </Link>
       ))}
-                <NavbarActions /> 
                 <UserButton></UserButton>
 
         </ul>
+        </>
       )}
 
 
