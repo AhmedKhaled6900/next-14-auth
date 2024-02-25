@@ -12,13 +12,14 @@ export const publicRoutes = [
 "/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/billboards/6a066fe9-75f6-489c-8f63-587936eb931f",
 "/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/products",
 "/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/products",
-
+"/category"
 ]
 
 export const clientRoutes = [
-   `/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb`
-
-
+   `/category`
+]
+export const productRoute =[
+    "/product"
 ]
 // An Array of routes that are used for authentiacation
 // these routes will redirect logged in users  to / settings 

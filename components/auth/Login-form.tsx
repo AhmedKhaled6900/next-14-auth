@@ -79,7 +79,7 @@ export const LoginForm = () => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="space-y-4">
+          <div className="space-y-2">
             {showTwoFactor && (
                 <FormField control={form.control}
                   name="code"

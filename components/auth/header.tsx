@@ -7,11 +7,11 @@ interface HederProps {
 export const Header =({label}:HederProps)=>{
 
     return (
-        <header className=" w-full flex-col flex gap-y-4 items-center justify-center">
+        <header className=" w-full flex-col flex gap-y-2 items-center justify-center">
             <h1 className={cn("text-3xl font-semibold", font.className)}>
-header component
+Store Authentication
             </h1>
-            <p className="text-muted-foreground text-sm">{label}</p>
+            <p className="text-muted-foreground text-md font-semibold">{label}</p>
         </header>
     )
 } 

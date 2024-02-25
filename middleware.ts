@@ -4,7 +4,8 @@ import {DEFUALT_LOGIN_REDIRECT,
 apiAuthPrefix,
 autheRoutes,
 publicRoutes,
-clientRoutes
+clientRoutes,
+productRoute
 } from "@/routes"
 import { NextResponse } from "next/server"
 const {auth} =NextAuth(authConfig)
@@ -15,7 +16,8 @@ const isLoggedin =!!req.auth
 const isApiAuthRoute =nextUrl.pathname.startsWith(apiAuthPrefix)
 const isPublicRoute =publicRoutes.includes(nextUrl.pathname)
 const isAuthRoute =autheRoutes.includes(nextUrl.pathname)
-const isclientRoute = nextUrl.pathname.startsWith("/api")
+const isclientRoute = nextUrl.pathname.includes(clientRoutes)
+const isproductRoute  =nextUrl.pathname.includes(productRoute)
 if(isApiAuthRoute){
   return null
 }
@@ -27,6 +29,9 @@ if(isApiAuthRoute){
 // }
 
 if(isclientRoute){
+  return null
+}
+if(isproductRoute){
   return null
 }
 if (isAuthRoute){
