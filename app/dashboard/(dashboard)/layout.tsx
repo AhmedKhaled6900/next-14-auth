@@ -55,6 +55,7 @@ export default async function SetupLayout({
 </Button> */}
 
         </div>
+        <ToastProvider></ToastProvider>
         {children}
         
          </>
