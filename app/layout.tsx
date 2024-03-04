@@ -1,5 +1,6 @@
 // this is the root layout
 
+import useSWR, { SWRConfig } from 'swr'
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -23,13 +24,17 @@ export default async function RootLayout({
 }) {
  const session  = await auth()
   return (
+
     <SessionProvider session={session}>
+
     <html lang="en">
       <body className={inter.className}>
+
 <TheMainNavbar></TheMainNavbar>
         <Toaster></Toaster>
         {children}</body>
     </html>
+
     </SessionProvider>
 
   )

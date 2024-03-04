@@ -10,7 +10,7 @@ import { Modal } from "@/components/ui/modal";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { useStoreModal } from "@/hooks/dashboard/use-store-modal";
+import { useStoreModal } from "@/hooks/dashboard/hooks/use-store-modal";
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -29,22 +29,16 @@ const formSchema = z.object({
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-  
     try {
       setLoading(true);
- 
-
       const response = await axios.post('/api/stores', values);
-      console.log(response)
-      window.location.assign(`/${response.data.id}`);
+ toast.success('Store created successfully');
+      window.location.assign(`/dashboard/${response.data.id}`);
     } catch (error) {
       console.log(error);
       toast.error('Something went wrong');
     } finally {
-   
       toast.success("Store created successfully")
-   
-
       setLoading(false);
     }
   };

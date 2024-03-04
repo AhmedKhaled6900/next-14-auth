@@ -1,6 +1,6 @@
 // "use client"
 
-import getCategories from "@/actions/get-categories"
+import getCategories from "@/data/get-categories"
 import { auth } from "@/auth"
 import { UserButton } from "@/components/auth/user-button"
 import { Button } from "@/components/ui/button"

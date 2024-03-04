@@ -3,7 +3,6 @@
 // import GetBillboard from "@/actions/get-billboard";
 // import getBillboard from "@/actions/get-billboard";
 import getBillboard from "@/actions/get-billboard";
-import getCategories from "@/actions/get-categories";
 import getProducts from "@/actions/get-products";
 import ProductList from "@/components/product-list";
 import Billboards from "@/components/ui/billboard";
@@ -31,6 +30,7 @@ const billboard =  await getBillboard("6a066fe9-75f6-489c-8f63-587936eb931f")
 
   return (
     <Container>
+
       <div className="space-y-10 pb-10">
         home
         <Billboards

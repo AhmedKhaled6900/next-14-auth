@@ -4,10 +4,9 @@ import {DEFUALT_LOGIN_REDIRECT,
 apiAuthPrefix,
 autheRoutes,
 publicRoutes,
-clientRoutes,
-productRoute
+// clientRoutes,
+// productRoute
 } from "@/routes"
-import { NextResponse } from "next/server"
 const {auth} =NextAuth(authConfig)
 export default auth( 
    async (req) => {
@@ -16,11 +15,11 @@ const isLoggedin =!!req.auth
 const isApiAuthRoute =nextUrl.pathname.startsWith(apiAuthPrefix)
 const isPublicRoute =publicRoutes.includes(nextUrl.pathname)
 const isAuthRoute =autheRoutes.includes(nextUrl.pathname)
-const isclientRoute = nextUrl.pathname.includes(clientRoutes)
-const isproductRoute  =nextUrl.pathname.includes(productRoute)
-if(isApiAuthRoute){
-  return null
-}
+// const isclientRoute = nextUrl.pathname.includes(clientRoutes)
+// const isproductRoute  =nextUrl.pathname.includes(productRoute)
+// if(isApiAuthRoute){
+//   return null
+// }
 // if(isAdminRoute){
 //   if(!isLoggedin){
 //     return Response.redirect(new URL('/auth/login', nextUrl))
@@ -28,28 +27,29 @@ if(isApiAuthRoute){
 // return null
 // }
 
-if(isclientRoute){
-  return null
-}
-if(isproductRoute){
-  return null
-}
-if (isAuthRoute){
-  if (isLoggedin) {
-    return Response.redirect(new URL(DEFUALT_LOGIN_REDIRECT , nextUrl))
+// if(isclientRoute){
+//   return nully
 
-  } 
-  return null
-}
-if(!isPublicRoute && !isLoggedin){
-  return Response.redirect(new URL('/auth/login', nextUrl))
-}
+// }
+// if(isproductRoute){
+//   return null
+// }
+// if (isAuthRoute){
+//   if (isLoggedin) {
+//     return Response.redirect(new URL(DEFUALT_LOGIN_REDIRECT , nextUrl))
+
+//   } 
+//   return null
+// }
+// if(!isPublicRoute && !isLoggedin){
+//   return Response.redirect(new URL('/auth/login', nextUrl))
+// }
 return null
 })
 
 // Optionally, don't invoke Middleware on some paths
 export const config = {
-    matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)']
+    matcher: ['/dashboard']
 }
 
 

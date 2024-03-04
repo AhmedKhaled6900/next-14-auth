@@ -1,12 +1,4 @@
-//  const DashboardPage =()=>{
-//     return (
-//         <div>
 
-//             dash page
-//         </div>
-//     )
-//  }
-//  export default DashboardPage
 
 import { CreditCard, DollarSign, Package } from "lucide-react";
 
@@ -20,6 +12,7 @@ import { getGraphRevenue } from "@/actions/get-graph-revenue";
 import { getStockCount } from "@/actions/get-stock-count";
 import { formatter } from "@/lib/utils";
 import { db } from "@/lib/db";
+import { redirect } from "next/navigation";
 
 interface DashboardPageProps {
   params: {
@@ -56,24 +49,16 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({
    
   // export default Page;
   
-const isStore = await db.store.findFirst({
-  where:{
-    id:params.storeId
-  }
-})
+// const isStore = await db.store.findFirst({
+//   where:{
+//     id:params.storeId
+//   }
+// })
+// if (isStore) {
+//   redirect(`/dashboard/${isStore.id}`);
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
   return (
 

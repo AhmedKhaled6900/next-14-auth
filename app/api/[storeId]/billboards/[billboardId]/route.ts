@@ -16,8 +16,6 @@ export async function GET(
         id: params.billboardId
       }
     });
-
-
     return NextResponse.json(billboard)
   } catch (error) {
     console.log('[BILLBOARD_GET]', error);

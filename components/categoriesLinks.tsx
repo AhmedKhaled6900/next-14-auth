@@ -5,16 +5,11 @@ import Link from "next/link";
 
 
 import Container from "@/components/ui/container";
-import NavbarActions from "./ui/navbar-actions";
-import MainNav from "./main-nav";
-import getCategories from "@/actions/get-categories";
 import Navbar from "./header";
+import getCategories from "@/data/get-categories";
 
-
-
-
- const  TheMainNavbar =  async ()=> { 
-const categories =await getCategories();
+ const  TheMainNavbar = async ()=> { 
+const categories = await getCategories();
 
   return ( 
     <div className="border-b">

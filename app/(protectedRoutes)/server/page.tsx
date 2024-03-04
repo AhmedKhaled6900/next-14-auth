@@ -1,4 +1,4 @@
-import getCategories from "@/actions/get-categories"
+import getCategories from "@/data/get-categories"
 import { UserInfo } from "@/components/userInfo"
 import { currentUser } from "@/lib/auth"
 
