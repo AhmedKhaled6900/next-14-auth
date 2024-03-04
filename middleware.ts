@@ -41,9 +41,9 @@ const isAuthRoute =autheRoutes.includes(nextUrl.pathname)
 //   } 
 //   return null
 // }
-// if(!isPublicRoute && !isLoggedin){
-//   return Response.redirect(new URL('/auth/login', nextUrl))
-// }
+if(!isPublicRoute && !isLoggedin){
+  return Response.redirect(new URL('/auth/login', nextUrl))
+}
 return null
 })
 

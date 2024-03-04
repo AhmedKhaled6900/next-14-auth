@@ -4,9 +4,9 @@
 export const publicRoutes = [
     '/',
     "/auth/new-verification",
-// "/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/categories",
-// "/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/categories/0a33b48c-3bf8-4b4e-ba1f-b809ac22d750",
-// "/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/categories/cd87bb9e-aebc-4f71-ac98-6d87f644c414",
+"/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/categories",
+"/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/categories/0a33b48c-3bf8-4b4e-ba1f-b809ac22d750",
+"/api/3ee29f52-68dc-4a46-b9c0-506e06d465eb/categories/cd87bb9e-aebc-4f71-ac98-6d87f644c414",
 
 "/api/59fea1a2-e5f1-46fa-b2b1-007fc68358d0/sizes",
 "/api/59fea1a2-e5f1-46fa-b2b1-007fc68358d0/colors",
