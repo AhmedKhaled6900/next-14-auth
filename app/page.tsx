@@ -26,7 +26,8 @@ const products = await getProducts({
   colorId: ""
 })
 
-const billboard =  await getBillboard("6a066fe9-75f6-489c-8f63-587936eb931f")
+const billboard =  await getBillboard("0a296a4c-5c04-4682-9131-50b9fbec6aec")
+// 0a296a4c-5c04-4682-9131-50b9fbec6aec
 
   return (
     <Container>
