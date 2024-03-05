@@ -104,7 +104,11 @@ const pathname = usePathname();
           {route.label}
       </Link>
       ))}
-      <NavbarActions /> 
+      <div onClick={handleNavLinkClick} className="flex items-center gap-y-4 m-2">
+
+      <NavbarActions  /> 
+
+      </div>
 
                 <UserButton></UserButton>
 

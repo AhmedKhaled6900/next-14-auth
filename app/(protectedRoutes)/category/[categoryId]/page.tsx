@@ -11,6 +11,7 @@ import getColors from '@/actions/get-colors';
 
 import Filter from './components/filter';
 import MobileFilters from './components/mobile-filters';
+import { Metadata, ResolvingMetadata } from 'next';
 
 export const revalidate = 0;
 
@@ -24,6 +25,20 @@ interface CategoryPageProps {
   }
 }
 
+export async function generateMetadata(
+  { params, searchParams }: CategoryPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.categoryId
+  const category = await getCategory(id);
+  return {
+    title: `Store-${category?.name}`
+    ,
+    openGraph: {
+      title: category?.name,
+    },
+  }
+}
 const CategoryPage: React.FC<CategoryPageProps> = async ({ 
   params, 
   searchParams
@@ -36,8 +51,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const sizes = await getSizes();
   const colors = await getColors();
   const category = await getCategory(params.categoryId);
-// console.log(category)
-  return (
+  return (<>
     <div className="bg-white">
       <Container>
         <Billboard 
@@ -70,6 +84,8 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
         </div>
       </Container>
     </div>
+  </>
+
   );
 };
 

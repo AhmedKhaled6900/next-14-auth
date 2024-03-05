@@ -4,6 +4,7 @@ import Info from '@/components/info';
 import getProduct from '@/actions/get-product';
 import getProducts from '@/actions/get-products';
 import Container from '@/components/ui/container';
+import { Metadata, ResolvingMetadata } from 'next';
 
 export const revalidate = 0;
 
@@ -12,7 +13,20 @@ interface ProductPageProps {
     productId: string;
   },
 }
-
+export async function generateMetadata(
+  { params,  }: ProductPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.productId
+  const product = await getProduct(id);
+  return {
+    title: `Store-${product?.name}`
+    ,
+    openGraph: {
+      title: product?.name,
+    },
+  }
+}
 const ProductPage: React.FC<ProductPageProps> = async ({ 
   params
  }) => {
