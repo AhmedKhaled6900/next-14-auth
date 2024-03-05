@@ -15,6 +15,10 @@ interface MainNavProps {
   data: Category[];
 }
 const Navbar:React.FC<MainNavProps>  = ({data}) => {
+
+  const handleNavLinkClick =()=>{
+
+setNav(false)  }
   const role = useCurrentRole();
     const [nav, setNav] = useState(false);
 
@@ -24,7 +28,6 @@ const handleResize = () => {
         setNav(false);
     }
 };
-
 // Set up event listener for window resize
 useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -42,13 +45,7 @@ const pathname = usePathname();
   }));
  
   return (
-
-    
-
-
-    <div className=" z-50 flex justify-end items-center w-full h-20 px-4 text-white nav">
-    
-
+    <div className=" z-50 flex justify-end items-center w-full h-20 px-0 text-white nav">
       <ul className="hidden md:flex z-50  ">
       {routes.map((route) => (
         <Link
@@ -56,25 +53,20 @@ const pathname = usePathname();
           href={route.href}
           className={cn(
             'text-sm font-medium transition-colors hover:text-black p-3 z-50',
-            route.active ? 'text-black border-b-2 border-black'  : 'text-neutral-500'
+            route.active ? 'text-black border-b-2 border-black '  : 'text-neutral-500'
           )}
         >
           {route.label}
       </Link>
-
-
       ))}
       <div className="flex items-center gap-y-4 m-2">
       <NavbarActions /> 
-
       </div>
-
 <UserButton></UserButton>
-
-
-
-
       </ul>
+
+
+
       {
   role==="ADMIN"? (
     <Button className="m-5">
@@ -97,12 +89,11 @@ const pathname = usePathname();
 
       {nav && (
         <>
-        
-        
-      
-        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen  bg-slate-400 text-gray-500">
+
+        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-slate-400 text-gray-500">
           {routes.map((route) => (
         <Link
+        onClick={handleNavLinkClick}
           key={route.href}
           href={route.href}
           className={cn(
@@ -113,6 +104,8 @@ const pathname = usePathname();
           {route.label}
       </Link>
       ))}
+      <NavbarActions /> 
+
                 <UserButton></UserButton>
 
         </ul>
