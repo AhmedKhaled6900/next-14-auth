@@ -56,7 +56,7 @@ const pathname = usePathname();
           href={route.href}
           className={cn(
             'text-sm font-medium transition-colors hover:text-black p-3 z-50',
-            route.active ? 'text-black' : 'text-neutral-500'
+            route.active ? 'text-black border-b-2 border-black'  : 'text-neutral-500'
           )}
         >
           {route.label}
@@ -64,9 +64,14 @@ const pathname = usePathname();
 
 
       ))}
+      <div className="flex items-center gap-y-4 m-2">
+      <NavbarActions /> 
+
+      </div>
 
 <UserButton></UserButton>
-<NavbarActions /> 
+
+
 
 
       </ul>

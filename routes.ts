@@ -42,4 +42,4 @@ export const autheRoutes = [
 export const apiAuthPrefix = '/api/auth'
 
 
-export const DEFUALT_LOGIN_REDIRECT="/settings"
+export const DEFUALT_LOGIN_REDIRECT="/"
