@@ -37,7 +37,7 @@ const BillboardsPage = async ({
 }) => {
   const billboards = await db.billboard.findMany({
     where: {
-      storeId: params.storeId
+      id: params.storeId
     },
     orderBy: {
       createdAt: 'desc'
