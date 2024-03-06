@@ -7,26 +7,26 @@ import { BillboardClient } from "./components/client";
 import { Metadata } from "next";
 
 
-// export async function generateMetadata(
-// {  params
-// }: {
-//   params: { storeId: string } }
+export async function generateMetadata(
+{  params
+}: {
+  params: { storeId: string } }
     
 
-// ): Promise<Metadata> {
-//   const store =await db.store.findFirst({
-//     where:{
-//       id:params.storeId
-//     }
-//   },
+): Promise<Metadata> {
+  const store =await db.store.findFirst({
+    where:{
+      id:params.storeId
+    }
+  },
  
   
-//   )
-//   return {
-//     title: `${store?.name} - Billboards`
+  )
+  return {
+    title: `${store?.name} - Billboards`
     
-//   }
-// }
+  }
+}
 
 
 
