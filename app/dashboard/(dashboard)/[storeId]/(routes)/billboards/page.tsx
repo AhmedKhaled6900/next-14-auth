@@ -30,14 +30,14 @@ export async function generateMetadata(
 
 
 
-const BillboardsPage = async ({
-  params
-}: {
-  params: { storeId: string }
-}) => {
+const BillboardsPage = async (
+  {  params
+  }: {
+    params: { storeId: string } }
+) => {
   const billboards = await db.billboard.findMany({
     where: {
-      id: params.storeId
+    storeId: params.storeId
     },
     orderBy: {
       createdAt: 'desc'
