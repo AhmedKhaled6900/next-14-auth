@@ -5,7 +5,29 @@ import { formatter } from "@/lib/utils";
 
 import { ProductsClient } from "./components/client";
 import { ProductColumn } from "./components/columns";
-
+import { Metadata } from "next";
+export async function generateMetadata(
+  params : {
+    storeId: string
+   },
+): Promise<Metadata> {
+  const id = params.storeId
+  const store =await db.store.findFirst({
+    where:{
+      id:params.storeId
+    }
+  },
+ 
+  
+  )
+  return {
+    title: `${store?.name} - Products`
+    ,
+    openGraph: {
+      title: id,
+    },
+  }
+}
 const ProductsPage = async ({
   params
 }: {

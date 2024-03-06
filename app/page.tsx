@@ -33,7 +33,7 @@ const billboard =  await getBillboard("0a296a4c-5c04-4682-9131-50b9fbec6aec")
     <Container>
 
       <div className="space-y-10 pb-10">
-        home
+    
         <Billboards
           data={ billboard}
         />

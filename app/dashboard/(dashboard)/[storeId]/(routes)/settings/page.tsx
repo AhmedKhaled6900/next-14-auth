@@ -4,8 +4,29 @@ import {db} from "@/lib/db";
 
 import { SettingsForm } from "./components/settings-form";
 import { auth } from "@/auth";
-// import StoreModal from "@/components/modals/store-modal";
-
+import { Metadata } from "next";
+export async function generateMetadata(
+  params : {
+    storeId: string
+   },
+): Promise<Metadata> {
+  const id = params.storeId
+  const store =await db.store.findFirst({
+    where:{
+      id:params.storeId
+    }
+  },
+ 
+  
+  )
+  return {
+    title: `${store?.name} - Settings`
+    ,
+    openGraph: {
+      title: id,
+    },
+  }
+}
 const SettingsPage = async ({
   params
 }: {

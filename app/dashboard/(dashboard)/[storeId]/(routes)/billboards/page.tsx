@@ -4,6 +4,33 @@ import {db} from "@/lib/db";
 
 import { BillboardColumn } from "./components/columns"
 import { BillboardClient } from "./components/client";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(
+  params : {
+    storeId: string
+   },
+): Promise<Metadata> {
+  const id = params.storeId
+  const store =await db.store.findFirst({
+    where:{
+      id:params.storeId
+    }
+  },
+ 
+  
+  )
+  return {
+    title: `${store?.name} - Billboards`
+    ,
+    openGraph: {
+      title: id,
+    },
+  }
+}
+
+
 
 const BillboardsPage = async ({
   params

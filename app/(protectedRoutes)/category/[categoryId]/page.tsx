@@ -32,7 +32,7 @@ export async function generateMetadata(
   const id = params.categoryId
   const category = await getCategory(id);
   return {
-    title: `Store-${category?.name}`
+    title: `Store - ${category?.name}`
     ,
     openGraph: {
       title: category?.name,

@@ -4,7 +4,29 @@ import {db} from "@/lib/db";
 
 import { ColorColumn } from "./components/columns"
 import { ColorClient } from "./components/client";
-
+import { Metadata } from "next";
+export async function generateMetadata(
+  params : {
+    storeId: string
+   },
+): Promise<Metadata> {
+  const id = params.storeId
+  const store =await db.store.findFirst({
+    where:{
+      id:params.storeId
+    }
+  },
+ 
+  
+  )
+  return {
+    title: `${store?.name} - Colors`
+    ,
+    openGraph: {
+      title: id,
+    },
+  }
+}
 const ColorsPage = async ({
   params
 }: {

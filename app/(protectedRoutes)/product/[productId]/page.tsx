@@ -20,7 +20,7 @@ export async function generateMetadata(
   const id = params.productId
   const product = await getProduct(id);
   return {
-    title: `Store-${product?.name}`
+    title: `Store - ${product?.name}`
     ,
     openGraph: {
       title: product?.name,
