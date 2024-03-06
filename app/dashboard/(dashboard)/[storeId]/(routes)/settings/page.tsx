@@ -6,9 +6,9 @@ import { SettingsForm } from "./components/settings-form";
 import { auth } from "@/auth";
 import { Metadata } from "next";
 export async function generateMetadata(
-  params : {
-    storeId: string
-   },
+  {  params
+  }: {
+    params: { storeId: string } }
 ): Promise<Metadata> {
   const id = params.storeId
   const store =await db.store.findFirst({

@@ -6,9 +6,9 @@ import { SizeColumn } from "./components/columns"
 import { SizesClient } from "./components/client";
 import { Metadata } from "next";
 export async function generateMetadata(
-  params : {
-    storeId: string
-   },
+  {  params
+  }: {
+    params: { storeId: string } }
 ): Promise<Metadata> {
   const id = params.storeId
   const store =await db.store.findFirst({
