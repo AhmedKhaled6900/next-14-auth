@@ -10,7 +10,9 @@ import { Metadata } from "next";
 export async function generateMetadata(
   params : {
     storeId: string
-   },
+  }
+    
+
 ): Promise<Metadata> {
   const id = params.storeId
   const store =await db.store.findFirst({
@@ -23,10 +25,7 @@ export async function generateMetadata(
   )
   return {
     title: `${store?.name} - Billboards`
-    ,
-    openGraph: {
-      title: id,
-    },
+    
   }
 }
 
