@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { db } from "@/lib/db";
 import { ModalProvider } from "@/providers/modal-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { ToastProvider } from "@/providers/toaster-provider";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -60,8 +61,16 @@ export default async function SetupLayout({
 
         </div>
         <ToastProvider></ToastProvider>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+
+
         {children}
-        
+        </ThemeProvider>
          </>
 
 

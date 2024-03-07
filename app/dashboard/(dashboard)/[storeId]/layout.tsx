@@ -4,6 +4,7 @@ import { auth } from '@/auth';
 import { ModalProvider } from '@/providers/modal-provider';
 import { Metadata, ResolvingMetadata } from 'next';
 import DashboardNavbar from '../_dashboard-components/dashboard-nav';
+import { MainNav } from '../_dashboard-components/main-nav';
 
 export async function generateMetadata(
    params : {
@@ -48,6 +49,8 @@ export default async function DashboardLayout({
   return (
     <>
           <DashboardNavbar/>
+        <MainNav className="mx-6" />
+          
       {/* <StoreSwitcher items={[]}></StoreSwitcher> */}
     {/* <ModalProvider/>  */}
       {children}
