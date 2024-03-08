@@ -7,6 +7,7 @@ import Link from "next/link";
 import Container from "@/components/ui/container";
 import Navbar from "./header";
 import getCategories from "@/data/get-categories";
+import { ThemeToggle } from "@/app/dashboard/(dashboard)/_dashboard-components/theme-toggle";
 
  const  TheMainNavbar = async ()=> { 
 const categories = await getCategories();
@@ -19,6 +20,7 @@ const categories = await getCategories();
             <p className="font-bold text-xl">STORE</p>
           </Link>
           {/* <NavbarActions />  */}
+          {/* <ThemeToggle /> */}
 
           <Navbar data={categories} /> 
         </div>

@@ -57,7 +57,7 @@ export function MainNav({
 
   return (
     <nav
-      className={cn("flex flex-wrap items-center space-x-6 lg:space-x-6", className)}
+      className={cn("flex flex-wrap items-center space-x-6 lg:space-x-6 m-5", className)}
       {...props}
     >
       {routes.map((route) => (

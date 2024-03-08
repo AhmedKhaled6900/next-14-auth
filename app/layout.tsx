@@ -11,6 +11,7 @@ import { Toaster } from '@/components/ui/sonner'
 import TheMainNavbar from '@/components/categoriesLinks'
 import Billboard from '@/components/ui/billboard'
 import { ToastProvider } from '@/providers/toaster-provider'
+import { ThemeProvider } from '@/providers/theme-provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -29,13 +30,23 @@ export default async function RootLayout({
     <SessionProvider session={session}>
 
     <html lang="en">
-      <body className={inter.className}>
 
+
+
+      <body className={inter.className}>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
 <TheMainNavbar></TheMainNavbar>
      <ToastProvider></ToastProvider>
         {children}
+        </ThemeProvider>
        
         </body>
+
     </html>
 
     </SessionProvider>

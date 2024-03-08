@@ -10,6 +10,7 @@ import NavbarActions from "./ui/navbar-actions";
 import { UserButton } from "./auth/user-button";
 import { useCurrentRole } from "@/hooks/use-current-role";
 import { Button } from "./ui/button";
+import { ThemeToggle } from "@/app/dashboard/(dashboard)/_dashboard-components/theme-toggle";
 
 interface MainNavProps {
   data: Category[];
@@ -45,20 +46,25 @@ const pathname = usePathname();
   }));
  
   return (
-    <div className=" z-50 flex justify-end items-center w-full h-20 px-0 text-white nav">
+    <div className=" z-50 flex justify-end items-center w-full h-20 px-0  nav">
       <ul className="hidden md:flex z-50  ">
       {routes.map((route) => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium transition-colors hover:text-black p-3 z-50',
-            route.active ? 'text-black border-b-2 border-black '  : 'text-neutral-500'
+            'text-sm font-medium transition-colors p-3 z-50',
+            route.active ? 'border-b-2 '  : ''
           )}
         >
           {route.label}
       </Link>
       ))}
+     
+      
+      <div className="flex items-center gap-y-4 m-2">
+      <ThemeToggle />
+      </div>
       <div className="flex items-center gap-y-4 m-2">
       <NavbarActions /> 
       </div>

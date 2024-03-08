@@ -69,8 +69,9 @@ export default async function SetupLayout({
           >
 
 
-        {children}
         </ThemeProvider>
+        {children}
+
          </>
 
 
