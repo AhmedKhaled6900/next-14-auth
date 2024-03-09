@@ -9,17 +9,9 @@ import Billboards from "@/components/ui/billboard";
 // import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
 
-// export const revalidate = 0;
+export const revalidate = 0;
 
 const HomePage = async  () => {
-  // const [billboards, setBillboards] = useState([]);
-  // const [error, setError] = useState(null);
-  // const products = await getProducts({ isFeatured: true });
-  // const billboard = await ("0e12e5cf-29ab-4529-b8d5-c5371dae1f7b");
-
-    // const storeId = '0e12e5cf-29ab-4529-b8d5-c5371dae1f7b'; // Replace with actual store ID
-  
-    // const products = await getProducts({ isFeatured: true });
 
 const products = await getProducts({
   isFeatured: false,
@@ -37,6 +29,7 @@ const billboard =  await getBillboard("0a296a4c-5c04-4682-9131-50b9fbec6aec")
         <Billboards
           data={ billboard}
         />
+
         <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
           <ProductList title="Featured Products" items={products} />
         </div>
