@@ -20,6 +20,8 @@ interface ProductPageProps {
     productId: string;
   },
 }
+
+type orientation= "vertical" | "horizontal" | undefined
 export async function generateMetadata(
   { params,  }: ProductPageProps,
   parent: ResolvingMetadata
@@ -41,7 +43,8 @@ const ProductPage: React.FC<ProductPageProps> = async ({
   const suggestedProducts = await getProducts({
     categoryId: product?.category?.id,
     isFeatured: true,
-    colorId: ''
+    colorId: '',
+  
   });
 
   if (!product) {
@@ -59,11 +62,13 @@ const ProductPage: React.FC<ProductPageProps> = async ({
             </div>
           </div>
           <hr className="my-10" />
-        <div className="">
+      <h3 className="font-bold text-3xl"> Suggested Products</h3>
+
+        <div className="my-5">
         <Carousel className= " " >
   <CarouselContent className=" ">
        {suggestedProducts.map((item) => (
-    <CarouselItem className=" md:basis-1/2 lg:basis-1/3 ">
+    <CarouselItem key={item.id} className=" md:basis-1/2 lg:basis-1/3 ">
         <ProductCard key={item.id} data={item} />
 
     </CarouselItem>
