@@ -5,7 +5,14 @@ import getProduct from '@/actions/get-product';
 import getProducts from '@/actions/get-products';
 import Container from '@/components/ui/container';
 import { Metadata, ResolvingMetadata } from 'next';
-
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import ProductCard from '@/components/ui/product-card';
 export const revalidate = 0;
 
 interface ProductPageProps {
@@ -52,9 +59,27 @@ const ProductPage: React.FC<ProductPageProps> = async ({
             </div>
           </div>
           <hr className="my-10" />
-        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
+        <div className="">
+        <Carousel className= " " >
+  <CarouselContent className=" ">
+       {suggestedProducts.map((item) => (
+    <CarouselItem className=" md:basis-1/2 lg:basis-1/3 ">
+        <ProductCard key={item.id} data={item} />
 
-          <ProductList title="Related Items" items={suggestedProducts} />
+    </CarouselItem>
+
+       ))}
+    {/* <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem> */}
+  </CarouselContent>
+  <CarouselPrevious className="m-10" />
+  <CarouselNext className="m-10" />
+</Carousel>
+
+
+
+          {/* <ProductList title="Related Items" items={suggestedProducts} /> */}
           </div>
         </div>
       </Container>
