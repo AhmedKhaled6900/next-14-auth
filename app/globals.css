@@ -9,7 +9,7 @@ body,
 }
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 100% 30%;
     --foreground: 222.2 84% 4.9%;
     --navigation: 222.2deg 3.53% 23.72% / 29%;
     --card: 0 0% 100%;
@@ -41,7 +41,7 @@ body,
   }
  
   .dark {
-    --background: 858.6 0.2 84% 3.9%;
+    --background: 858.6 0.2 84% 3.9% /30%;
     --foreground: 210 40% 98%;
  
     --card: 222.2 84% 4.9%;

@@ -71,6 +71,7 @@ const pathname = usePathname();
 <UserButton></UserButton>
       </ul>
 
+      <ThemeToggle />
 
 
       {
@@ -83,6 +84,7 @@ const pathname = usePathname();
 
   ):null
 }
+
 
 {/* <NavbarActions />  */}
 
@@ -108,14 +110,14 @@ const pathname = usePathname();
       {nav && (
         <>
 
-        <ul  className="flex flex-col bg-navigation items-center absolute top-16 py-10  right-0 w-64  h-screen">
+        <ul  className="flex flex-col text-white bg-navigation items-center absolute top-16 py-10  right-0 w-64  h-screen">
           {routes.map((route) => (
         <Link
         onClick={handleNavLinkClick}
           key={route.href}
           href={route.href}
           className={cn(
-            'text-lg font-bold transition-colors hover:text-black  ',
+            'text-lg font-bold transition-colors  ',
             // route.active ? 'text-black' : 'text-white'
           )}
         >
