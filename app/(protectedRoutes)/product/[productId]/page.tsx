@@ -78,7 +78,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
     <CarouselItem>...</CarouselItem>
     <CarouselItem>...</CarouselItem> */}
   </CarouselContent>
-  <CarouselPrevious className="m-10" />
+  <CarouselPrevious className="m-10 w-20 h-20 z-100"  />
   <CarouselNext className="m-10" />
 </Carousel>
 

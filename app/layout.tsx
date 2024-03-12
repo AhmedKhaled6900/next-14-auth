@@ -40,7 +40,10 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-<TheMainNavbar></TheMainNavbar>
+            {/* <div className="fixed inset-0 z-50 "> */}
+            <TheMainNavbar></TheMainNavbar>
+
+            {/* </div> */}
      <ToastProvider></ToastProvider>
         {children}
         </ThemeProvider>

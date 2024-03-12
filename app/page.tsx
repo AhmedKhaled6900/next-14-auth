@@ -24,7 +24,7 @@ const billboard =  await getBillboard("0a296a4c-5c04-4682-9131-50b9fbec6aec")
   return (
     <Container>
 
-      <div className="space-y-10 pb-10">
+      <div className="space-y-10 pb-10 my-20">
     
         <Billboards
           data={ billboard}
