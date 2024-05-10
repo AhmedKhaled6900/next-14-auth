@@ -1,12 +1,9 @@
 
 
-// import GetBillboard from "@/actions/get-billboard";
-// import getBillboard from "@/actions/get-billboard";
 import getBillboard from "@/actions/get-billboard";
 import getProducts from "@/actions/get-products";
 import ProductList from "@/components/product-list";
 import Billboards from "@/components/ui/billboard";
-// import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
 
 export const revalidate = 0;
@@ -24,12 +21,10 @@ const billboard =  await getBillboard("0a296a4c-5c04-4682-9131-50b9fbec6aec")
   return (
     <Container>
 
-      <div className="space-y-10 pb-10 my-20">
-    
+      <div className="space-y-10 pb-10  ">
         <Billboards
           data={ billboard}
         />
-
         <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
           <ProductList title="Featured Products" items={products} />
         </div>

@@ -28,6 +28,8 @@ await db.user.create({
         email,
         name,
        password: hashedPassword
+    
+
     }
 });
 const verificationToken = await generateVerificationToken(email)
