@@ -94,7 +94,7 @@ catch (error) {
           case "CredentialsSignin":
                return {error:"Invalid email or password"}
                default:
-                     return {error:"somthingwentwrong"}
+                     return {error:"somthing went wrong"}
      }
 
 }

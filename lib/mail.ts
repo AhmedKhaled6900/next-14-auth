@@ -4,7 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export const sendTwoFactorTokenEmail = async (
   email: string,
   token: string
-)=>{
+)=>{ 
   // console.log(token)
 await resend.emails.send({
   from: "onboarding@resend.dev",
