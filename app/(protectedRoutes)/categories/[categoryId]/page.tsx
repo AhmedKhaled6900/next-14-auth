@@ -52,7 +52,6 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const colors = await getColors();
   const category = await getCategory(params.categoryId);
   return (<>
-    <div className="">
       <Container>
         <Billboard 
           data={category.billboard}
@@ -83,7 +82,6 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
           </div>
         </div>
       </Container>
-    </div>
   </>
 
   );

@@ -29,8 +29,7 @@ export default async function SetupLayout({
             userId:userId.user.id
         }
     })
-    console.log(store)
-
+ 
 // if(store){
 //     redirect(`/dashboard/${store.id}/categories`) 
 // }
@@ -39,28 +38,8 @@ export default async function SetupLayout({
     return (
         <> 
 
-        <div>
-            {
-                store.map((item)=>(
-                    <Button key={item.id}>
-                    <Link href={`/dashboard/${item.id}`}>    
-                    {item.name}
-                    </Link>
-                    </Button>
-                ))
-
-
-
-            }
-{/* <Button>
-    <Link href={store.map((item)=> `/dashboard/${item.id}`)}>
-    Create
-    </Link>
-
-</Button> */}
-
-        </div>
-        <ToastProvider></ToastProvider>
+ 
+        {/* <ToastProvider></ToastProvider> */}
         <ThemeProvider
             attribute="class"
             defaultTheme="system"

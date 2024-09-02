@@ -10,6 +10,7 @@ import TheMainNavbar from '@/components/categoriesLinks'
 import Billboard from '@/components/ui/billboard'
 import { ToastProvider } from '@/providers/toaster-provider'
 import { ThemeProvider } from '@/providers/theme-provider'
+import { ModalProvider } from '@/providers/modal-provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default  async function RootLayout({
     <SessionProvider session={session}>
     <html lang="en">
       <body className={inter.className}>
+        <ModalProvider/>
       <ThemeProvider
             attribute="class"
             defaultTheme="system"

@@ -35,6 +35,8 @@ const formSchema = z.object({
   categoryId: z.string().min(1),
   colorId: z.string().min(1),
   sizeId: z.string().min(1),
+  description: z.string().min(1),
+
   isFeatured: z.boolean().default(false).optional(),
   isArchived: z.boolean().default(false).optional()
 });
@@ -48,13 +50,16 @@ interface ProductFormProps {
   categories: Category[];
   colors: Color[];
   sizes: Size[];
+  description:string
+
 };
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
   categories,
   sizes,
-  colors
+  colors,
+  description
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -63,7 +68,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? 'Edit product' : 'Create product';
-  const description = initialData ? 'Edit a product.' : 'Add a new product';
+  const desc = initialData ? 'Edit a product.' : 'Add a new product';
   const toastMessage = initialData ? 'Product updated.' : 'Product created.';
   const action = initialData ? 'Save changes' : 'Create';
 
@@ -77,6 +82,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     categoryId: '',
     colorId: '',
     sizeId: '',
+    description:"",
     isFeatured: false,
     isArchived: false,
   }
@@ -298,6 +304,19 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     </FormDescription>
                   </div>
                 </FormItem>
+              )}
+            />
+                                     <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+               <FormItem>
+                  <FormLabel>Product description</FormLabel>
+                  <FormControl>
+                    <Input disabled={loading} placeholder="Product description" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                 </FormItem>
               )}
             />
           </div>

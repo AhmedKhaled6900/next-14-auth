@@ -19,10 +19,29 @@ export interface Product{
     size:Size
     color:Color
     images:Image[]
-    // imageUrl:string
+    reviews:Review[]
+    description:string
 
  
 }
+
+interface UserReview {
+    id: string;
+    name: string | null;
+    image: string | null;
+  }
+  
+  // Define the Review interface including User
+ export interface Review {
+    id: string;
+    productId: string;
+    userId: string;
+    rating: number;
+    comment: string | null;
+    createdAt: string; // ISO 8601 string
+    updatedAt: string; // ISO 8601 string
+    user: UserReview; // Nested User information
+  }
 export interface Image{
     id:string
 url:string

@@ -41,6 +41,7 @@ const ProductsPage = async ({
       category: true,
       size: true,
       color: true,
+      reviews:true
     },
     orderBy: {
       createdAt: 'desc'
@@ -55,6 +56,7 @@ const ProductsPage = async ({
     price: formatter.format(item.price.toNumber()),
     category: item.category.name,
     size: item.size.name,
+    reviews: item.reviews.length,
     color: item.color.value,
     createdAt: format(item.createdAt, 'MMMM do, yyyy'),
   }));

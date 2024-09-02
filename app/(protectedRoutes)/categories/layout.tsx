@@ -10,7 +10,7 @@ export default async function CategoriesLayout ({ children }: { children: React.
     return <>
     <Container>
 
-    <div className="grid grid-cols-8 gap-5 ">
+    <div className="grid grid-cols-6 gap-5 ">
 
  
 {/* <div className="col-span-1 h-full flex flex-col  ">

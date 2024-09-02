@@ -12,7 +12,7 @@ export async function POST(
 
     const body = await req.json();
 
-    const { name, price, categoryId, colorId, sizeId, images, isFeatured, isArchived } = body;
+    const { name, price, categoryId, colorId, sizeId, images, isFeatured, isArchived,description } = body;
 
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
@@ -66,6 +66,7 @@ export async function POST(
         categoryId,
         colorId,
         sizeId,
+        description,
         storeId: params.storeId,
         images: {
           createMany: {

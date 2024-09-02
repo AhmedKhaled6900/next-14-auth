@@ -11,6 +11,8 @@ export type ProductColumn = {
   category: string;
   size: string;
   color: string;
+  reviews :number;
+
   createdAt: string;
   isFeatured: boolean;
   isArchived: boolean;
@@ -50,6 +52,16 @@ export const columns: ColumnDef<ProductColumn>[] = [
         <div className="h-6 w-6 rounded-full border" style={{ backgroundColor: row.original.color }} />
       </div>
     )
+  },
+  {
+    accessorKey: "reviews",
+    header: "Reviews",
+    cell: ({ row }) => (
+      <div key={row.original.id} className="flex items-center gap-x-2">
+        {row.original.reviews}
+        </div>
+    )
+    
   },
   {
     accessorKey: "createdAt",
