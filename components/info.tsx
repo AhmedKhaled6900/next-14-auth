@@ -45,6 +45,14 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           <ShoppingCart size={20} />
         </Button>
       </div>
+      <hr className="my-4" />
+<div className="flex flex-col gap-y-6">
+<p className="text-2xl font-semibold ">
+  Description
+  </p>
+<p>{data?.description}</p>
+
+</div>
     </div>
   );
 }
