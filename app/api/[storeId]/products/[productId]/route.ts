@@ -21,6 +21,16 @@ export async function GET(
         category: true,
         size: true,
         color: true,
+        reviews:{
+          include: {
+            user:{
+              select: {
+                name: true,
+                image: true
+              }
+            }
+          }
+        }
       }
     });
   

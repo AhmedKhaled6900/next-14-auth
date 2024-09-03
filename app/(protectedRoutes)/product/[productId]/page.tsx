@@ -13,6 +13,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import ProductCard from '@/components/ui/product-card';
+import ReviewForm from '@/components/review-form';
+import UserReview from '@/components/user-reviews';
 export const revalidate = 0;
 
 interface ProductPageProps {
@@ -46,7 +48,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
     colorId: '',
   
   });
-
+console.log(product)
   if (!product) {
     return null;
   }
@@ -60,8 +62,16 @@ const ProductPage: React.FC<ProductPageProps> = async ({
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <Info data={product} />
             </div>
+            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+    <ReviewForm data={product}></ReviewForm>
+</div>
           </div>
+
+          <UserReview product={product}>
+
+</UserReview>
           <hr className="my-10" />
+
       <h3 className="font-bold text-3xl"> Suggested Products</h3>
 
         <div className="my-5">

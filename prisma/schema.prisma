@@ -157,8 +157,8 @@ model Product {
 model Review {
   id        String      @id @default(uuid())
 
-    productId String
-    product Product @relation(fields: [productId] , references: [id], onDelete: Cascade)
+  productId String
+  product Product @relation(fields: [productId] , references: [id], onDelete: Cascade)
  userId String 
  user User @relation(fields: [userId] ,references: [id])
  rating Int
