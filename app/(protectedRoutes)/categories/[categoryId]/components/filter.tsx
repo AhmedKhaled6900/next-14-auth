@@ -6,6 +6,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Color, Size } from "@/types";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+// import { SelectValue } from "@radix-ui/react-select";
 
 interface FilterProps {
   data: (Size | Color)[];
@@ -49,7 +51,19 @@ const Filter: React.FC<FilterProps> = ({
         {name}
       </h3>
       <hr className="my-4" />
-      <div className="flex flex-wrap gap-2">
+      <Select disabled={data.length === 0} onValueChange={onClick} >
+        <SelectTrigger>
+          <SelectValue  placeholder="Select a category" />
+        </SelectTrigger>
+<SelectContent>
+  <SelectItem onClick={() => onClick('')} value="default"> All</SelectItem>
+  {data.map((filter) => (
+    <SelectItem key={filter.id} value={filter.id}> {filter.name}</SelectItem>
+  ))}
+</SelectContent>
+
+</Select>
+      {/* <div className="flex flex-wrap gap-2">
         {data.map((filter) => (
           <div key={filter.id} className="flex items-center">
             <Button
@@ -63,9 +77,22 @@ const Filter: React.FC<FilterProps> = ({
             </Button>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
 
 export default Filter;
+
+{/* <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}> */}
+{/* <FormControl> */}
+  // <SelectTrigger>
+    // <SelectValue defaultValue={field.value} placeholder="Select a category" />
+  // </SelectTrigger>
+{/* </FormControl> */}
+{/* <SelectContent> */}
+  // {categories.map((category) => (
+    // <SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
+  // ))}
+// </SelectContent>
+// </Select>

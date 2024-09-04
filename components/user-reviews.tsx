@@ -1,5 +1,7 @@
 
 "use client"
+import { format } from "date-fns";
+
 import Image from "next/image";
 import avatar from "@/public/images.png";
 import { Product, Review } from "@/types";
@@ -12,103 +14,123 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { AlertModal } from "./modals/alert-modal";
 interface ReviewProps {
-product:Product
+  product: Product
 }
- const revalidate =0
-const UserReview :React.FC<ReviewProps> = ({product}) => {
-    const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const session = useSession()
-    const params= useParams()
-    const [deleteReviewId, setDeleteReviewId] = useState<string | null>(null); // State to keep track of review to be deleted
+const revalidate = 0
+const UserReview: React.FC<ReviewProps> = ({ product }) => {
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const session = useSession()
+  const params = useParams()
+  const [deleteReviewId, setDeleteReviewId] = useState<string | null>(null); // State to keep track of review to be deleted
 
-    console.log(params)
-const router =useRouter()
-    const onDelete = async () => {
-        try {
-          setLoading(true);
-          await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/reviews/${deleteReviewId}`);
-          router.refresh();
-        //   router.push(`/dashboard/${params.storeId}/billboards`);
-          toast.success('Review deleted.');
-        } catch (error: any) {
-        //   toast.error('Make sure you removed all categories using this billboard first.');
-        } finally {
-          setLoading(false);
-          setOpen(false);
-        }
-      }
-    // console.log(session.data?.user.id)
-    return ( <>
-       <AlertModal
-      isOpen={open} 
+  console.log(params)
+  const router = useRouter()
+  const onDelete = async () => {
+    try {
+      setLoading(true);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/reviews/${deleteReviewId}`);
+      router.refresh();
+      //   router.push(`/dashboard/${params.storeId}/billboards`);
+      toast.success('Review deleted.');
+    } catch (error: any) {
+      //   toast.error('Make sure you removed all categories using this billboard first.');
+    } finally {
+      setLoading(false);
+      setOpen(false);
+    }
+  }
+  // console.log(session.data?.user.id)
+  return (<>
+    <AlertModal
+      isOpen={open}
       onClose={() => setOpen(false)}
       onConfirm={onDelete}
       loading={loading}
     />
-<div>
-<h1 className="text-2xl font-semibold">
+    <div>
+      <h1 className="text-2xl font-semibold">
         Our customers reviews
-    </h1>
-</div>
- 
+      </h1>
+    </div>
+
 
 
     {
-     product.reviews.length===0?
-     <div>
-        <h1 className="flex justify-center items-center my-5">
-        No reviews
+      product.reviews.length === 0 ?
+        <div>
+          <h1 className="flex justify-center items-center my-5">
+            No reviews
 
-        </h1>
-     </div>: 
-     
-     <>{ product.reviews.map((review:Review)=>(
-       <><div key={review.id} className="grid grid-cols-6 my-5 gap-x-5 gap-y-6">
-             <div className=" flex items-center justify-start col-span-1  rounded-full ">
- 
-                 {review?.user?.image == null  ?
-                     <Image src={avatar} width={50} height={50} alt="user image" className="rounded-full" /> :
-                     <Image src={`${review.user.image}`}
-                         width={50} height={50} alt={"user image"} className="rounded-full" />}
+          </h1>
+        </div> :
 
-             </div>
+        <>{product.reviews.map((review: Review) => (
+          <><div key={review.id} className="my-5 gap-x-5 gap-y-6">
+            <div className=" flex items-center justify-between   rounded-full ">
+              <div className="flex items-center gap-x-2">
+                <div>
 
-             <div className="col-span-5 flex items-center justify-start">
-                 <p>
-                     {review.comment}
+                {review?.user?.image == null ?
+                  <Image src={avatar} width={50} height={50} alt="user image" className="rounded-full" /> :
+                  <Image src={`${review.user.image}`}
+                    width={50} height={50} alt={"user image"} className="rounded-full" />}
+                </div>
 
-                 </p>
-             </div>
-             {
-            session.data?.user.id === review.userId && <div>
-  <Button
-            // disabled={loading}
-            variant="destructive"
-            size="sm"
-            onClick={() => {setOpen(true); setDeleteReviewId(review.id)} // Set reviewId to state
-            }
-          >
-            <Trash className="h-4 w-4" />
-          </Button>
+<div className=" font-semibold text-lg">
+
+<h3>{review?.user?.name}</h3>
+</div>
+              </div>
+
+            
+              <div>
+
+                <h3>{format(new Date(review.createdAt), "d/ M/ y")}</h3>
+
+              </div>
 
             </div>
-         }
-         </div>
 
 
-         <hr className="my-10" />
+          
+          </div>
+
+            <div className=" flex items-center justify-between">
 
 
-         </>
-           
-       
-       
-       ))} </>
+              <p>
+                {review.comment}
+
+              </p>
+
+              {
+              session.data?.user.id === review.userId && <div className="mt-3">
+                <Button
+                  // disabled={loading}
+                  variant="destructive"
+                  size="sm"
+                  onClick={() => { setOpen(true); setDeleteReviewId(review.id) } // Set reviewId to state
+                  }
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+
+              </div>
+            }
+            </div>
+            <hr className="my-10" />
+
+
+          </>
+
+
+
+        ))} </>
     }
- 
-     </>   
-     );
+
+  </>
+  );
 }
- 
+
 export default UserReview;

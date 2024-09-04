@@ -66,11 +66,11 @@ console.log(product)
     <ReviewForm data={product}></ReviewForm>
 </div>
           </div>
+          <hr className="my-10" />
 
           <UserReview product={product}>
 
 </UserReview>
-          <hr className="my-10" />
 
       <h3 className="font-bold text-3xl"> Suggested Products</h3>
 
