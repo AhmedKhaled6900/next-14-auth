@@ -30,19 +30,19 @@ export default  async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ModalProvider/>
-      {/* <ThemeProvider
+      <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          > */}
+          >
             {/* <div className="fixed inset-0 z-50 "> */}
             <TheMainNavbar></TheMainNavbar>
 
             {/* </div> */}
      <ToastProvider></ToastProvider>
         {children}
-        {/* </ThemeProvider> */}
+        </ThemeProvider>
        
         </body>
 

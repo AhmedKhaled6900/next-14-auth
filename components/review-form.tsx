@@ -68,7 +68,7 @@ const [loading, setLoading] = useState(false);
         }
       };
     return ( 
-        <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+        <div className="mt-10 lg:px-4 sm:mt-16 sm:px-0 lg:mt-0">
                               <h1 className="my-10 font-semibold text-2xl">
                       Leave comment
                     </h1>

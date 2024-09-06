@@ -46,23 +46,26 @@ const Filter: React.FC<FilterProps> = ({
   }
 
   return ( 
-    <div className="mb-8">
+    <div className="mb-4 lg:mb-6">
+
+
       <h3 className="text-lg font-semibold">
         {name}
       </h3>
-      <hr className="my-4" />
       <Select disabled={data.length === 0} onValueChange={onClick} >
         <SelectTrigger>
-          <SelectValue  placeholder="Select a category" />
+          <SelectValue  placeholder="Select a filter" />
         </SelectTrigger>
 <SelectContent>
-  <SelectItem onClick={() => onClick('')} value="default"> All</SelectItem>
+  {/* <SelectItem onClick={() => onClick('')} value="default"> All</SelectItem> */}
   {data.map((filter) => (
     <SelectItem key={filter.id} value={filter.id}> {filter.name}</SelectItem>
   ))}
 </SelectContent>
 
 </Select>
+<hr className="my-4" />
+
       {/* <div className="flex flex-wrap gap-2">
         {data.map((filter) => (
           <div key={filter.id} className="flex items-center">
@@ -79,6 +82,7 @@ const Filter: React.FC<FilterProps> = ({
         ))}
       </div> */}
     </div>
+
   );
 };
 

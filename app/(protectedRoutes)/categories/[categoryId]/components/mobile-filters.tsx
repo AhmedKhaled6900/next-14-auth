@@ -26,15 +26,20 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
 
   return (
     <>
+<h3 className="text-lg font-semibold mb-3">
+  Filter by
+</h3>
+
+  
       <Button
         onClick={onOpen}
-        className="flex items-center gap-x-2 lg:hidden"
+        className=" items-center gap-x-2 hidden"
       >
         Filters
         <Plus size={20} />
       </Button>
 
-      <Dialog open={open} as="div" className="relative z-40 lg:hidden" onClose={onClose}>
+      <Dialog open={open} as="div" className="relative z-40 hidden" onClose={onClose}>
         
         {/* Background color and opacity */}
         <div className="fixed inset-0 bg-black bg-opacity-25" />

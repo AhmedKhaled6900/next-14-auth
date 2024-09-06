@@ -99,7 +99,7 @@ const pathname = usePathname();
         <h3 className="font-bold text-lg p-3">
           Categories
         </h3>
-        <div>
+        <div className=" flex flex-wrap p-3">
 
         {routes.map((route) => (
 
@@ -107,8 +107,8 @@ const pathname = usePathname();
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium transition-colors p-3 z-50 hover:font-bold',
-            route.active ? 'border-b-2 '  : ''
+            'text-sm font-medium transition-colors p-3 z-50 hover:font-bold whitespace-nowrap',
+            route.active ? 'font-bold '  : ''
           )}
         >
           {/* <Button> */}
