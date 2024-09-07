@@ -64,7 +64,7 @@ const ProductCard: React.FC<ProductCard> = ({
       </div>
       {/* Description */}
       <div className="grid grid-cols-2 gap-1 ">
-        <p className="font-semibold text-lg whitespace-nowrap">{data.name}</p>
+        <p className="font-semibold text-md whitespace-nowrap">{data.name}</p>
         <div className=" flex items-center px-2 justify-end">
         <div className="h-6 w-6  rounded-full border flex  items-end justify-end " style={{ backgroundColor: data?.color?.value }} />
 
