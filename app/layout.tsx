@@ -11,7 +11,6 @@ import { ToastProvider } from '@/providers/toaster-provider'
 import { ThemeProvider } from '@/providers/theme-provider'
 import { ModalProvider } from '@/providers/modal-provider'
 import { Footer } from '@/components/ui/footer'
-import { Head } from 'next/document'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
