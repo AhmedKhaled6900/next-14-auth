@@ -1,5 +1,4 @@
 
-
 import getBillboard from "@/actions/get-billboard";
 import getProducts from "@/actions/get-products";
 import ProductList from "@/components/product-list";
@@ -21,10 +20,20 @@ const billboard =  await getBillboard("f853092f-30b2-4d36-95fe-899aba73961b")
   return (
     <Container>
 
-      <div className="space-y-10 pb-10  ">
-        <Billboards
+      <div className="space-y-10 pb-10 w-full ">
+<div>
+<video autoPlay muted loop  className="  w-full">
+<source src="/intro.mp4"/>
+</video>
+
+</div>
+  
+
+        
+
+        {/* <Billboards
           data={ billboard}
-        />
+        /> */}
         <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
           <ProductList title="Featured Products" items={products} />
         </div>
