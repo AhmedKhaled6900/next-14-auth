@@ -63,7 +63,10 @@ const UserReview: React.FC<ReviewProps> = ({ product }) => {
             No reviews
 
           </h1>
-        </div> :
+        <hr className="my-5" />
+
+        </div> 
+        :
 
         <>{product.reviews.map((review: Review) => (
           <><div key={review.id} className="my-5 gap-x-5 gap-y-6">

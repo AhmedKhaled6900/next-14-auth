@@ -61,12 +61,15 @@ console.log(product)
             <Gallery images={product.images} />
             <div className="mt-10 lg:px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <Info data={product} />
-            </div>
-            <div className="mt-10 lg:px-4 sm:mt-16 sm:px-0 lg:mt-0">
+          <hr className="my-5" />
+
+              <div className="mt-10  sm:mt-16 sm:px-0 lg:mt-0">
     <ReviewForm data={product}></ReviewForm>
 </div>
+            </div>
+  
           </div>
-          <hr className="my-10" />
+          <hr className="my-5" />
 
           <UserReview product={product}>
 
@@ -88,7 +91,7 @@ console.log(product)
     <CarouselItem>...</CarouselItem>
     <CarouselItem>...</CarouselItem> */}
   </CarouselContent>
-  <CarouselPrevious className="m-10 w-20 h-20 z-100"  />
+  <CarouselPrevious className="m-10 z-100"  />
   <CarouselNext className="m-10" />
 </Carousel>
 

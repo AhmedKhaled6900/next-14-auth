@@ -68,12 +68,12 @@ const [loading, setLoading] = useState(false);
         }
       };
     return ( 
-        <div className="mt-10 lg:px-4 sm:mt-16 sm:px-0 lg:mt-0">
-                              <h1 className="my-10 font-semibold text-2xl">
+        <div className="mt-5  sm:mt-16 sm:px-0 lg:mt-0">
+                              <h1 className="my-5 font-semibold text-2xl">
                       Leave comment
                     </h1>
            <Form {...form}>
-           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 w-full">
            <FormField
               control={form.control}
               name="comment"

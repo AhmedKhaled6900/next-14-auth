@@ -26,7 +26,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           <Currency value={data?.price} />
         </p>
       </div>
-      <hr className="my-4" />
+      <hr className="my-5" />
       <div className="flex flex-col gap-y-6">
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold ">Size:</h3>
@@ -45,7 +45,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           <ShoppingCart size={20} />
         </Button>
       </div>
-      <hr className="my-4" />
+      <hr className="my-5" />
 <div className="flex flex-col gap-y-6">
 <p className="text-2xl font-semibold ">
   Description
