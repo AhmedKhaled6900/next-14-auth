@@ -95,11 +95,11 @@ const pathname = usePathname();
   ):null
 }
       </div>
-      <div>
+    
         <h3 className="font-bold text-lg p-3">
           Categories
         </h3>
-        <div className=" flex flex-wrap p-3">
+        <div className=" flex flex-wrap ">
 
         {routes.map((route) => (
 
@@ -118,7 +118,7 @@ const pathname = usePathname();
       </Link>
       ))} 
         </div>
-      </div>
+ 
       {/* <div className="flex items-center gap-y-4 m-2"> */}
 
       {/* <div className="flex items-center gap-y-4 m-2"> */}

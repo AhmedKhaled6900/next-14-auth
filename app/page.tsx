@@ -22,7 +22,7 @@ const billboard =  await getBillboard("f853092f-30b2-4d36-95fe-899aba73961b")
 
       <div className="space-y-10 pb-10 w-full ">
 <div>
-<video autoPlay muted loop  className="  w-full">
+<video autoPlay muted loop  className=" transition duration-500 ease-in-out aspect-video  rounded-xl w-full">
 <source src="/intro.mp4"/>
 </video>
 
