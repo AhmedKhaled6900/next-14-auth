@@ -62,7 +62,7 @@ export const LoginForm = () => {
         })
 .catch(() => {
 
-  setError("Something wentwrong")
+  setError("Something went wrong")
   // throw new Error("Something went wrong")
 
 })

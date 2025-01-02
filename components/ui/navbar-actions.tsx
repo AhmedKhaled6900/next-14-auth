@@ -7,17 +7,17 @@ import { useEffect, useState } from "react";
 import {Button} from "@/components/ui/button";
 import useCart from "@/hooks/user/use-cart";
 
-
 const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    syncCart();
   }, []);
 
   const router = useRouter();
-  const cart = useCart();
-
+  const cart = useCart((state) => state.items);
+  const syncCart = useCart.persist.rehydrate; // Zustand's rehydrate function
   if (!isMounted) {
     return null;
   }
@@ -30,7 +30,7 @@ const NavbarActions = () => {
           color="white"
         />
         <span className="ml-2 text-sm font-medium text-white">
-          {cart.items.length}
+          {cart.length}
         </span>
       </Button>
     </div>

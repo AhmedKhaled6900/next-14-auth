@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      transitionProperty: {
+        'transform': 'transform',
+        'opacity': 'opacity',
+        'all': 'all',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

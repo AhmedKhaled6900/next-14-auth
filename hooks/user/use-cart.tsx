@@ -33,7 +33,9 @@ const useCart = create(
   removeAll: () => set({ items: [] }),
 }), {
   name: 'cart-storage',
-  storage: createJSONStorage(() => localStorage)
+  storage: createJSONStorage(() => localStorage),
+
+
 }));
 
 export default useCart;
